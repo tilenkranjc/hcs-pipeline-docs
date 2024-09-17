@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Distance Matrix &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feature Selection" href="feature_selection.html" />
+    <link rel="prev" title="Concatenate Rows of DataFrames" href="concat_rows.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Distance Matrix</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/distance_matrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="distance-matrix">
+<h1>Distance Matrix<a class="headerlink" href="#distance-matrix" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Distance Matrix Module</strong> enables users to compute and visualize a
+distance matrix based on the selected data columns of a dataset. It
+provides the option to compute either the Euclidean or Cosine distance
+between the rows of the dataset. The matrix is labeled using metadata
+columns, and the user can choose which metadata to include for labeling.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module allows users to calculate a distance matrix, which is useful
+for understanding the similarity or dissimilarity between samples in the
+dataset. The distance matrix can be used in various downstream analyses,
+such as clustering, dimensionality reduction, or visualizations like
+heatmaps.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects a DataFrame from the available
+datasets. The selected DataFrame will be used to compute the
+distance matrix.</p></li>
+<li><p><strong>Use Case</strong>: This input allows users to choose the dataset they
+want to analyze.</p></li>
+</ul>
+</li>
+<li><p><strong>Select Metadata Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: The user selects metadata columns that will be
+used to label the distance matrix. These columns represent
+non-numeric data that can help distinguish different samples
+(e.g., <code class="docutils literal notranslate"><span class="pre">Treatment</span></code>, <code class="docutils literal notranslate"><span class="pre">Timepoint</span></code>).</p></li>
+<li><p><strong>Use Case</strong>: Helps in identifying samples in the distance matrix
+by their metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Select Distance Metric</strong>:</p>
+<ul class="simple">
+<li><p><strong>Radio Button</strong>: The user chooses the distance metric to
+calculate:</p>
+<ul>
+<li><p><strong>Euclidean Distance</strong>: Measures the straight-line distance
+between samples.</p></li>
+<li><p><strong>Cosine Distance</strong>: Measures the cosine of the angle between
+samples, often used when magnitude doesn’t matter but direction
+does.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Case</strong>: Provides flexibility in selecting the appropriate
+metric depending on the nature of the data.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Calculate Distance Matrix</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button triggers the computation
+of the distance matrix based on the selected distance metric and
+columns. The matrix is then displayed and saved for further use.</p></li>
+<li><p><strong>Use Case</strong>: Initiates the calculation process for the distance
+matrix.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling-and-computation">
+<h3>Data Handling and Computation:<a class="headerlink" href="#data-handling-and-computation" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Distance Matrix Calculation</strong>:</p>
+<ul class="simple">
+<li><p><strong>Euclidean Distance</strong>: Measures the direct distance between two
+points in a multidimensional space. It’s appropriate for datasets
+where absolute differences between values matter.</p></li>
+<li><p><strong>Cosine Distance</strong>: Measures the cosine of the angle between two
+vectors in a multidimensional space. It’s useful when the
+magnitude of the vectors is not as important as their orientation.</p></li>
+</ul>
+</li>
+<li><p><strong>Labeling the Distance Matrix</strong>:</p>
+<ul class="simple">
+<li><p>Metadata columns selected by the user are used to generate labels
+for the distance matrix. Columns with constant values across all
+samples are excluded from the labels to ensure they are
+informative.</p></li>
+<li><p>If no metadata columns are selected or all selected columns have
+constant values, a default sample labeling is applied (e.g.,
+<code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">2</span></code>, etc.).</p></li>
+</ul>
+</li>
+<li><p><strong>Saving the Distance Matrix</strong>:</p>
+<ul class="simple">
+<li><p>The resulting distance matrix is saved so it can be accessed and
+used in future steps of the data pipeline, such as clustering or
+visualization.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Evaluating Similarity Between Experimental Samples</strong>: A biologist
+wants to understand how similar or different various treatment groups
+are based on their experimental results. Using this module, they select
+their dataset, choose metadata columns such as <code class="docutils literal notranslate"><span class="pre">Treatment</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Timepoint</span></code> for labeling, and then compute the Cosine distance matrix.
+The resulting matrix helps them identify which treatment groups are most
+similar based on their experimental outcomes.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Distance Metric Choice</strong>: Users can choose between Euclidean and
+Cosine distances, giving flexibility depending on whether the
+magnitude of the values or their relative orientation is more
+important.</p></li>
+<li><p><strong>Metadata Labeling</strong>: The user can select metadata columns for
+labeling, allowing for easy identification of samples in the distance
+matrix.</p></li>
+<li><p><strong>Versatile Application</strong>: The distance matrix can be used for
+clustering, dimensionality reduction, or as an input for further
+analyses in the data pipeline.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Metadata Selection</strong>: Only metadata columns with varying values
+across the dataset will be included in the labels. Constant metadata
+columns will be automatically excluded to ensure the labels are
+informative.</p></li>
+<li><p><strong>Distance Metrics</strong>: Use Euclidean distance when you care about
+absolute differences between samples, and Cosine distance when you
+care more about the direction or orientation of data points.</p></li>
+</ul>
+</section>
+<section id="when-to-use-euclidean-distance">
+<h3>When to Use <strong>Euclidean Distance</strong>:<a class="headerlink" href="#when-to-use-euclidean-distance" title="Link to this heading"></a></h3>
+<p><strong>Euclidean distance</strong> is the straight-line distance between two points
+in a multidimensional space. It is appropriate when the magnitude of the
+differences between values is important. This metric works well in cases
+where you want to assess absolute differences across all dimensions (or
+features) of your data.</p>
+</section>
+</section>
+<section id="when-to-use-euclidean-distance-1">
+<span id="id1"></span><h2>When to use Euclidean distance:<a class="headerlink" href="#when-to-use-euclidean-distance-1" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Magnitude Matters</strong>: When the absolute values or scales of the
+features are important. For example, if you are comparing gene
+expression levels, and the absolute difference in expression is
+meaningful, Euclidean distance is a good choice.</p></li>
+<li><p><strong>Uniform Scale</strong>: It works well if your data is on the same scale
+across features, meaning that differences across dimensions are
+comparable.</p></li>
+<li><p><strong>Physical Distance Interpretation</strong>: When your data represents
+physical measurements (e.g., distances, lengths, concentrations) and
+the actual magnitude of the differences between values matters.</p></li>
+</ol>
+</section>
+<section id="example-use-case">
+<h2>Example Use Case:<a class="headerlink" href="#example-use-case" title="Link to this heading"></a></h2>
+<p>If you are comparing the results of different treatment groups based on
+measured cell growth rates, where you care about how much larger or
+smaller the rates are, <strong>Euclidean distance</strong> is more suitable because
+it measures the overall magnitude of difference between treatments.</p>
+<hr class="docutils" />
+<section id="when-to-use-cosine-distance">
+<h3>When to Use <strong>Cosine Distance</strong>:<a class="headerlink" href="#when-to-use-cosine-distance" title="Link to this heading"></a></h3>
+<p><strong>Cosine distance</strong> (or more specifically, 1 - cosine similarity)
+measures the cosine of the angle between two vectors. It focuses on the
+orientation or direction of the vectors rather than their magnitude.
+This metric is useful when the relationship between variables (i.e.,
+direction) is more important than their absolute values.</p>
+</section>
+</section>
+<section id="when-to-use-cosine-distance-1">
+<span id="id2"></span><h2>When to use Cosine distance:<a class="headerlink" href="#when-to-use-cosine-distance-1" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Magnitude Doesn’t Matter</strong>: When the relative difference (i.e., the
+shape or pattern) between the values is important, but the absolute
+magnitude is not. For example, if you’re analyzing high-dimensional
+data like gene expression profiles, and you’re more interested in the
+pattern of expression (whether two genes are up- or downregulated
+together) than the exact expression levels.</p></li>
+<li><p><strong>Normalized or Sparse Data</strong>: It works well when your data has been
+normalized (e.g., all vectors are of the same length) or when
+comparing sparse vectors, where the focus is on the similarity of the
+directions rather than the magnitudes.</p></li>
+<li><p><strong>Direction-Based Similarity</strong>: When comparing patterns of features
+or behaviors where the angle (direction) between data points is more
+meaningful than the actual distance.</p></li>
+</ol>
+</section>
+<section id="example-use-case-1">
+<span id="id3"></span><h2>Example Use Case:<a class="headerlink" href="#example-use-case-1" title="Link to this heading"></a></h2>
+<p>If you are comparing gene expression profiles from different samples
+where the relative upregulation and downregulation of genes are of
+interest, <strong>Cosine distance</strong> is more appropriate. In this case, even if
+two profiles have different absolute expression levels, they may still
+be considered similar if the pattern of upregulation and downregulation
+is the same across genes.</p>
+<hr class="docutils" />
+<section id="summary">
+<h3>Summary:<a class="headerlink" href="#summary" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Euclidean Distance</strong>: Use when the <strong>magnitude</strong> of differences is
+important, such as when comparing physical measurements or absolute
+values.</p></li>
+<li><p><strong>Cosine Distance</strong>: Use when you care more about the <strong>direction</strong>
+or <strong>pattern</strong> of the data rather than the magnitude, such as when
+analyzing normalized or sparse data, or when assessing similarity in
+patterns.</p></li>
+</ul>
+<p>Both metrics can be valuable depending on the structure of your data and
+the goals of your analysis.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="concat_rows.html" class="btn btn-neutral float-left" title="Concatenate Rows of DataFrames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feature_selection.html" class="btn btn-neutral float-right" title="Feature Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Columns from DataFrame &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactive Heatmap" href="heatmap_plot.html" />
+    <link rel="prev" title="Feature Selection" href="feature_selection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Select Columns from DataFrame</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/filter_columns.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="select-columns-from-dataframe">
+<h1>Select Columns from DataFrame<a class="headerlink" href="#select-columns-from-dataframe" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Select Columns from DataFrame Module</strong> allows users to choose
+specific columns from a dataset to create a new DataFrame. Users can
+manually select columns or upload a file containing column names to
+pre-select columns. The module provides flexibility for narrowing down
+the dataset to only the most relevant columns.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module is designed to help users focus on specific columns of
+interest within a dataset. By filtering the columns, users can
+streamline their analysis by reducing the size of the dataset and
+retaining only the relevant data.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects one DataFrame from the available
+datasets. The selected DataFrame will be used for column
+selection.</p></li>
+<li><p><strong>Use Case</strong>: This input allows users to choose which dataset they
+want to refine by selecting specific columns.</p></li>
+</ul>
+</li>
+<li><p><strong>File Uploader for Pre-Selecting Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>File Upload</strong>: Users can upload a text file (e.g., <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or
+<code class="docutils literal notranslate"><span class="pre">.csv</span></code>) containing column names. The uploaded file should
+contain one column name per line. The uploaded column names will
+automatically be selected in the list of columns.</p></li>
+<li><p><strong>Use Case</strong>: This option helps users pre-select columns from an
+external file, making it easier to narrow down the columns
+quickly.</p></li>
+</ul>
+</li>
+<li><p><strong>Scrollable Container for Column Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkboxes</strong>: A scrollable list of checkboxes is displayed,
+allowing users to manually select or deselect columns from the
+DataFrame.</p></li>
+<li><p><strong>Use Case</strong>: Allows users to browse through all available columns
+and select the ones relevant to their analysis.</p></li>
+</ul>
+</li>
+<li><p><strong>Select All / Deselect All</strong>:</p>
+<ul class="simple">
+<li><p><strong>Buttons</strong>: Two buttons allow users to either select all columns
+or deselect all columns at once.</p></li>
+<li><p><strong>Use Case</strong>: This is useful when users want to quickly select or
+deselect all columns without manually toggling each checkbox.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Create DataFrame with Selected Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button creates a new DataFrame
+based on the selected columns. The resulting DataFrame is
+displayed for the user to review and is also saved for future use.</p></li>
+<li><p><strong>Use Case</strong>: This option allows users to finalize their selection
+and generate a new dataset that includes only the chosen columns.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Column Selection</strong>:</p>
+<ul class="simple">
+<li><p>Users can manually select columns from a list or upload a file
+containing column names to pre-select the columns.</p></li>
+<li><p>If the user chooses to select all or deselect all columns, the
+selection is updated accordingly.</p></li>
+</ul>
+</li>
+<li><p><strong>File Upload for Pre-Selection</strong>:</p>
+<ul class="simple">
+<li><p>If a file is uploaded, the module reads the column names from the
+file and automatically checks the corresponding columns in the
+scrollable list, making it easier to select specific columns
+quickly.</p></li>
+</ul>
+</li>
+<li><p><strong>New DataFrame Creation</strong>:</p>
+<ul class="simple">
+<li><p>After column selection, a new DataFrame is created with only the
+selected columns. This DataFrame is displayed for user review and
+saved for further use in the data pipeline.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Selecting Relevant Columns for Analysis</strong>: A biologist has a dataset
+containing hundreds of columns but only needs to analyze a few specific
+columns related to experimental conditions and results. Using this
+module, they can either upload a file containing the relevant column
+names or manually select the columns from the scrollable list. Once the
+columns are selected, the module generates a new DataFrame that includes
+only the columns of interest, allowing the biologist to focus on the
+necessary data.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Manual or File-Based Column Selection</strong>: Users can choose columns
+manually or upload a file with column names to streamline the
+selection process.</p></li>
+<li><p><strong>Select All/Deselect All</strong>: Quickly select or deselect all columns
+with a single click.</p></li>
+<li><p><strong>Scrollable Container</strong>: The module provides a scrollable container,
+making it easier to browse and select columns in large datasets.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Pre-Selection File Format</strong>: The uploaded file should contain one
+column name per line (either <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.csv</span></code> formats are
+supported) to ensure proper pre-selection.</p></li>
+<li><p><strong>Column Availability</strong>: Ensure that the column names in the uploaded
+file match the actual column names in the dataset to avoid errors.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="feature_selection.html" class="btn btn-neutral float-left" title="Feature Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="heatmap_plot.html" class="btn btn-neutral float-right" title="Interactive Heatmap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

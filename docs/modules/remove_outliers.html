@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remove Outliers &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sampling" href="sample_df.html" />
+    <link rel="prev" title="Data Quality Filtering" href="qc_df.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Remove Outliers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/remove_outliers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="remove-outliers">
+<h1>Remove Outliers<a class="headerlink" href="#remove-outliers" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Remove Outliers Module</strong> allows users to identify and remove
+outliers from their dataset using three different statistical methods:
+Mean ± k*SD (Standard Deviation), Interquartile Range (IQR), and Median
+Absolute Deviation (MAD). Outlier removal helps improve data quality by
+eliminating extreme values that could skew the results of analyses.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects the DataFrame to clean by removing
+outliers.</p></li>
+<li><p><strong>Use Case</strong>: This ensures that users can target the specific
+dataset they are working with for outlier detection and removal.</p></li>
+</ul>
+</li>
+<li><p><strong>Outlier Removal Methods</strong>:</p>
+<ul class="simple">
+<li><p><strong>Mean ± k*SD</strong>:</p>
+<ul>
+<li><p>Outliers are defined as values that fall outside the range of
+the mean ± (k * standard deviation).</p></li>
+<li><p>This method is sensitive to extreme outliers because it relies
+on the mean and standard deviation, which can be affected by
+outliers.</p></li>
+<li><p><strong>Best for</strong>: Normally distributed data where outliers deviate
+from the general trend.</p></li>
+</ul>
+</li>
+<li><p><strong>Interquartile Range (IQR)</strong>:</p>
+<ul>
+<li><p>Outliers are values less than Q1 - (k * IQR) or greater than
+Q3 + (k * IQR), where IQR is the range between the 1st (Q1)
+and 3rd (Q3) quartiles.</p></li>
+<li><p>This method is robust to extreme values, making it useful for
+non-normally distributed data.</p></li>
+<li><p><strong>Best for</strong>: Skewed or non-normal distributions, or when data
+contains many extreme values.</p></li>
+</ul>
+</li>
+<li><p><strong>Median Absolute Deviation (MAD)</strong>:</p>
+<ul>
+<li><p>This method identifies outliers based on deviations from the
+median, making it robust to outliers in the data.</p></li>
+<li><p>MAD is often considered more robust than using standard
+deviation because it is based on the median rather than the
+mean.</p></li>
+<li><p><strong>Best for</strong>: Data with heavy tails, or when robustness to
+outliers is critical.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>k Factor</strong>:</p>
+<ul class="simple">
+<li><p><strong>Number Input</strong>: The user specifies the k factor, which
+determines the threshold for outlier detection (e.g., mean ± k *
+SD).</p></li>
+<li><p><strong>Use Case</strong>: Adjusting the k factor allows the user to set the
+sensitivity of outlier detection, with higher values detecting
+fewer outliers and lower values detecting more.</p></li>
+</ul>
+</li>
+<li><p><strong>Minimal Number of Replicates</strong>:</p>
+<ul class="simple">
+<li><p><strong>Number Input</strong>: The user specifies the minimum number of
+replicates required for outlier detection. This ensures that only
+groups with sufficient data points are analyzed.</p></li>
+<li><p><strong>Use Case</strong>: This is important for ensuring that calculations are
+meaningful, especially in small datasets.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Column Inference</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkboxes</strong>: The user can choose whether metadata columns start
+with <code class="docutils literal notranslate"><span class="pre">Metadata_</span></code> or whether to remove certain feature columns
+(such as those from CellProfiler) from the metadata options.</p></li>
+<li><p><strong>Use Case</strong>: Simplifies the selection of relevant columns by
+filtering out irrelevant or non-metadata columns.</p></li>
+</ul>
+</li>
+<li><p><strong>Grouping Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: The user selects grouping columns for which
+outlier detection will be performed. This ensures that outliers
+are detected within groups (e.g., by plate, treatment, or
+timepoint).</p></li>
+<li><p><strong>Use Case</strong>: Grouping allows users to identify outliers in
+specific experimental conditions or batches.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="computation-details">
+<h3>Computation Details:<a class="headerlink" href="#computation-details" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mean ± k*SD Method</strong>:</p>
+<ul class="simple">
+<li><p>Formula: Outliers are defined as any value outside the range: [
+<span class="math notranslate nohighlight">\(\text{mean} \pm k \times \text{standard deviation}\)</span> ]</p></li>
+<li><p><strong>Advantages</strong>: Useful for normally distributed data. Sensitive to
+extreme values.</p></li>
+<li><p><strong>Drawback</strong>: Can be skewed by the very outliers it aims to
+remove, as the mean and standard deviation are sensitive to
+extreme values.</p></li>
+</ul>
+</li>
+<li><p><strong>Interquartile Range (IQR) Method</strong>:</p>
+<ul class="simple">
+<li><p>Formula: Outliers are values outside: [
+<span class="math notranslate nohighlight">\(Q1 - (k \times IQR) \quad \text{or} \quad Q3 + (k \times IQR)\)</span> ] where IQR =
+Q3 - Q1 (the difference between the 75th and 25th percentiles).</p></li>
+<li><p><strong>Advantages</strong>: Robust against extreme values, useful for skewed
+data.</p></li>
+<li><p><strong>Drawback</strong>: Less effective if the dataset is normally
+distributed with few outliers.</p></li>
+</ul>
+</li>
+<li><p><strong>Median Absolute Deviation (MAD) Method</strong>:</p>
+<ul class="simple">
+<li><p>Formula: Outliers are values that deviate from the median by more
+than a certain threshold: [ <span class="math notranslate nohighlight">\(\text{Outlier if: } \|x -\text{median} | &gt; k \times \text{MAD}\)</span> ] where MAD is the
+median of the absolute deviations from the median.</p></li>
+<li><p><strong>Advantages</strong>: Very robust to outliers, particularly effective
+for data with non-normal distributions.</p></li>
+<li><p><strong>Drawback</strong>: More complex to compute, especially for large
+datasets.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="recommendations-for-method-selection">
+<h3>Recommendations for Method Selection:<a class="headerlink" href="#recommendations-for-method-selection" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mean ± k*SD</strong>:</p>
+<ul class="simple">
+<li><p><strong>Best for</strong>: Normally distributed data with few outliers.</p></li>
+<li><p><strong>When to Use</strong>: Use this method if the dataset has a bell-shaped
+(normal) distribution and the primary concern is extreme
+deviations from the mean.</p></li>
+<li><p><strong>Tip</strong>: Start with k=2 or k=3 and adjust based on the number of
+outliers detected.</p></li>
+</ul>
+</li>
+<li><p><strong>Interquartile Range (IQR)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Best for</strong>: Skewed or non-normal data, or when outliers are
+expected at the extreme ends.</p></li>
+<li><p><strong>When to Use</strong>: Use this method if the dataset contains many
+extreme values or if the distribution is skewed. It’s ideal for
+biological data, which often follows non-normal distributions.</p></li>
+<li><p><strong>Tip</strong>: A common choice for k is 1.5, which effectively removes
+moderate outliers.</p></li>
+</ul>
+</li>
+<li><p><strong>Median Absolute Deviation (MAD)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Best for</strong>: Data with extreme outliers or non-normal
+distributions.</p></li>
+<li><p><strong>When to Use</strong>: This method is best when robustness to extreme
+values is critical, such as in heavy-tailed distributions.</p></li>
+<li><p><strong>Tip</strong>: MAD works well with a k-factor of 2-3, depending on the
+extremity of the outliers.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Removing Outliers from Experimental Data</strong>: A biologist is analyzing
+cell viability data collected from multiple plates. Some measurements
+are far outside the expected range, likely due to experimental error or
+data collection issues. To clean the dataset, the biologist selects the
+<strong>IQR</strong> method with a k-factor of 1.5, grouping the data by plate and
+treatment conditions. This ensures that outliers are removed within each
+experimental group, improving the overall data quality for further
+analysis.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qc_df.html" class="btn btn-neutral float-left" title="Data Quality Filtering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sample_df.html" class="btn btn-neutral float-right" title="Sampling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

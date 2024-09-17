@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concatenate or Merge DataFrames &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Normalization" href="normalization.html" />
+    <link rel="prev" title="Load Platemap" href="load_platemap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Concatenate or Merge DataFrames</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/merge_columns.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="concatenate-or-merge-dataframes">
+<h1>Concatenate or Merge DataFrames<a class="headerlink" href="#concatenate-or-merge-dataframes" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Concatenate or Merge DataFrames Module</strong> allows users to either
+concatenate or merge multiple datasets (DataFrames). This module offers
+flexibility by letting users add prefixes to column names, and in the
+case of merging, users can specify which columns to merge on. It is
+especially useful for combining datasets that either share similar
+structures or contain complementary information.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module helps users combine data from different sources by
+concatenating datasets (stacking columns side by side) or merging them
+based on shared columns. By providing options for column prefixes and
+merging strategies, the module makes it easy to organize and integrate
+data from multiple datasets.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: The user selects one or more DataFrames from the
+available datasets to concatenate or merge.</p></li>
+<li><p><strong>Use Case</strong>: This input allows users to select the datasets they
+want to work with, ensuring that only relevant data is combined.</p></li>
+</ul>
+</li>
+<li><p><strong>Merge Option</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkbox</strong>: The user can choose whether to merge the DataFrames
+instead of concatenating them.</p></li>
+<li><p><strong>Use Case</strong>: If the user wants to combine datasets based on
+shared values in specific columns (e.g., merging datasets on
+<code class="docutils literal notranslate"><span class="pre">ID</span></code> or <code class="docutils literal notranslate"><span class="pre">Well</span></code>), this option provides the flexibility to do
+so.</p></li>
+</ul>
+</li>
+<li><p><strong>Column Selection for Merging</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: If the merge option is selected, the user can
+choose one or more common columns on which to merge the
+DataFrames.</p></li>
+<li><p><strong>Use Case</strong>: This allows users to specify the keys for merging,
+ensuring that data from different datasets aligns correctly.</p></li>
+</ul>
+</li>
+<li><p><strong>Prefix for Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Text Inputs</strong>: Users can provide a prefix for each selected
+DataFrame. This prefix will be added to the column names, helping
+distinguish between datasets once they are combined.</p></li>
+<li><p><strong>Use Case</strong>: This is useful when multiple DataFrames contain
+columns with the same names, allowing users to prevent name
+conflicts or track which dataset each column came from.</p></li>
+</ul>
+</li>
+<li><p><strong>Apply Prefix Only to Duplicated Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkbox</strong>: If checked, the prefix is only applied to columns
+that have duplicates across DataFrames, leaving unique column
+names unchanged.</p></li>
+<li><p><strong>Use Case</strong>: This option reduces unnecessary renaming, only
+applying prefixes where needed to avoid conflicts.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Process DataFrames</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button processes the selected
+DataFrames by either concatenating or merging them, based on the
+user’s input. The resulting DataFrame is then displayed and saved.</p></li>
+<li><p><strong>Use Case</strong>: This option finalizes the user’s selections and
+processes the DataFrames accordingly.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Renaming Columns</strong>:</p>
+<ul class="simple">
+<li><p>For each DataFrame, the module allows the user to add a prefix to
+its column names. This helps avoid conflicts when DataFrames with
+similar or identical column names are concatenated or merged.</p></li>
+</ul>
+</li>
+<li><p><strong>Merging DataFrames</strong>:</p>
+<ul class="simple">
+<li><p>If the user chooses to merge the DataFrames, the module merges
+them based on the selected common columns using an outer merge,
+ensuring that all data is retained, even if some values are
+missing.</p></li>
+</ul>
+</li>
+<li><p><strong>Concatenating DataFrames</strong>:</p>
+<ul class="simple">
+<li><p>If concatenation is chosen, the DataFrames are combined by
+stacking columns from each dataset side by side. This operation is
+performed along the column axis (<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>), keeping the rows
+intact.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Merging Multiple Datasets with Shared Keys</strong>: A biologist has two
+datasets: one containing experimental results and another containing
+metadata such as sample IDs and treatment conditions. Using this module,
+the biologist selects both datasets, chooses to merge them on the
+<code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">ID</span></code> column, and applies different prefixes to the columns to
+easily differentiate between the two datasets. The resulting merged
+DataFrame contains all the experimental results along with the
+associated metadata.</p>
+<p><strong>Concatenating Data from Different Plates</strong>: In another scenario, the
+user may have multiple datasets from different plates but wants to
+concatenate the columns from each plate. The module allows the user to
+apply a prefix to the columns for each plate, ensuring that the final
+concatenated DataFrame is easy to interpret.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Concatenate or Merge</strong>: Users can either concatenate columns or
+merge datasets based on shared values, providing flexibility
+depending on the structure of their data.</p></li>
+<li><p><strong>Custom Prefixes</strong>: The ability to add prefixes ensures that column
+names remain unique and distinguishable after the DataFrames are
+combined, making it easier to track the origin of each column.</p></li>
+<li><p><strong>Selective Prefixing</strong>: The option to apply prefixes only to
+duplicated columns prevents unnecessary renaming of columns that are
+already unique across the DataFrames.</p></li>
+<li><p><strong>Merging on Specific Columns</strong>: Users can select which columns to
+use for merging, ensuring that the data is aligned correctly and
+merged in a meaningful way.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Column Compatibility</strong>: When merging DataFrames, make sure the
+selected columns (merge keys) are present in all DataFrames and
+contain values that will enable meaningful merging.</p></li>
+<li><p><strong>DataFrame Structure</strong>: The resulting DataFrame after concatenation
+or merging retains the original structure of the data, with added
+prefixes for clarity if needed. This helps maintain the integrity of
+the data during processing.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="load_platemap.html" class="btn btn-neutral float-left" title="Load Platemap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="normalization.html" class="btn btn-neutral float-right" title="Normalization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

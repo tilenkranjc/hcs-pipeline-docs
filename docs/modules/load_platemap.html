@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Load Platemap &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Concatenate or Merge DataFrames" href="merge_columns.html" />
+    <link rel="prev" title="Upload Data" href="load_csv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Load Platemap</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/load_platemap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="load-platemap">
+<h1>Load Platemap<a class="headerlink" href="#load-platemap" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Load Platemap Module</strong> allows users to upload and process Excel
+files containing plate maps, where each sheet in the Excel file
+represents a different type of metadata. This module extracts the plate
+metadata, including well locations, and combines it into a single
+DataFrame, which can be used for downstream analysis.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module is designed to handle metadata from multiple Excel sheets,
+often used in high-throughput screening experiments where plate maps
+define the location of treatments, controls, or other metadata across
+wells. The resulting DataFrame consolidates all metadata from the
+uploaded files, making it easier to merge with experimental data.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>File Upload</strong>:</p>
+<ul class="simple">
+<li><p><strong>File Uploader</strong>: The user can upload one or more Excel files
+(<code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>). Each file represents one plate, and the sheets within
+each file contain different types of metadata.</p></li>
+<li><p><strong>Use Case</strong>: Useful for uploading and processing metadata
+associated with plates in high-content screening or similar
+experiments.</p></li>
+</ul>
+</li>
+<li><p><strong>Dataset Name</strong>:</p>
+<ul class="simple">
+<li><p><strong>Text Input</strong>: The user provides a name for the dataset, which is
+used to label and store the processed DataFrame for later use in
+the data pipeline.</p></li>
+<li><p><strong>Use Case</strong>: The dataset name helps in identifying the results of
+the plate map processing within the workflow.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Process Files</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button processes the uploaded
+Excel files and generates a combined metadata DataFrame that
+includes information from all plates and sheets.</p></li>
+<li><p><strong>Use Case</strong>: This option triggers the extraction and merging of
+metadata from the uploaded Excel files.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Processing Each Excel File</strong>:</p>
+<ul class="simple">
+<li><p>For each uploaded Excel file, the module processes all sheets,
+assuming each sheet contains metadata for the corresponding plate.</p></li>
+<li><p>The first column in each sheet represents the row numbers, while
+the remaining columns represent the metadata values for each well.</p></li>
+</ul>
+</li>
+<li><p><strong>Row and Column Extraction</strong>:</p>
+<ul class="simple">
+<li><p>The module extracts the row and column information from each sheet
+and uses them to determine the well locations in the format
+<code class="docutils literal notranslate"><span class="pre">Well</span></code>, such as <code class="docutils literal notranslate"><span class="pre">A01</span></code> or <code class="docutils literal notranslate"><span class="pre">B05</span></code>.</p></li>
+<li><p>It also combines this well information with the metadata provided
+in each sheet, allowing the module to track which metadata belongs
+to which well.</p></li>
+</ul>
+</li>
+<li><p><strong>Merging Data from Multiple Sheets</strong>:</p>
+<ul class="simple">
+<li><p>The metadata from each sheet in an Excel file is merged together
+on the columns <code class="docutils literal notranslate"><span class="pre">Row</span></code>, <code class="docutils literal notranslate"><span class="pre">Column</span></code>, and <code class="docutils literal notranslate"><span class="pre">Well</span></code>. This ensures
+that metadata from different sheets is linked to the correct well
+for each plate.</p></li>
+</ul>
+</li>
+<li><p><strong>Plate and Filename Information</strong>:</p>
+<ul class="simple">
+<li><p>The module adds a <code class="docutils literal notranslate"><span class="pre">plate</span></code> column to distinguish data from
+different plates, and a <code class="docutils literal notranslate"><span class="pre">filename</span></code> column to track the source of
+each plate’s metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Final Metadata DataFrame</strong>:</p>
+<ul class="simple">
+<li><p>After processing all the uploaded files, the module concatenates
+the metadata from each plate into a single DataFrame, which is
+then saved for further analysis in the pipeline.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Uploading and Processing Plate Maps for High-Content Screening</strong>: A
+biologist has conducted an experiment using multiple plates, each
+containing different treatments and controls. The metadata for these
+plates, such as treatment type, concentration, and well locations, is
+stored in multiple Excel files where each sheet represents different
+types of metadata. Using this module, the biologist uploads the Excel
+files, processes the plate maps, and generates a consolidated metadata
+DataFrame. This DataFrame is then used to analyze the experimental data
+based on the treatment and well information.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Multiple Files and Sheets</strong>: The module handles multiple Excel
+files, each containing several metadata sheets, making it ideal for
+large experiments involving multiple plates.</p></li>
+<li><p><strong>Customizable Well Mapping</strong>: The module automatically generates
+well identifiers (<code class="docutils literal notranslate"><span class="pre">Well</span></code>) in the format of letter-number
+combinations (e.g., <code class="docutils literal notranslate"><span class="pre">A01</span></code>, <code class="docutils literal notranslate"><span class="pre">B02</span></code>), providing a clear mapping of
+rows and columns to the well locations.</p></li>
+<li><p><strong>Merging Metadata from Multiple Sheets</strong>: Metadata from different
+sheets is merged on <code class="docutils literal notranslate"><span class="pre">Row</span></code>, <code class="docutils literal notranslate"><span class="pre">Column</span></code>, and <code class="docutils literal notranslate"><span class="pre">Well</span></code>, ensuring that
+all relevant information for each well is combined.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Excel File Structure</strong>: The module assumes that each sheet in the
+Excel file contains well-specific metadata, with rows representing
+the well positions and columns containing metadata values.</p></li>
+<li><p><strong>Consistent Well Naming</strong>: The row and column labels must be
+consistent across sheets to ensure accurate merging of metadata.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="load_csv.html" class="btn btn-neutral float-left" title="Upload Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="merge_columns.html" class="btn btn-neutral float-right" title="Concatenate or Merge DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

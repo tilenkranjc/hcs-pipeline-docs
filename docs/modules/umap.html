@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMAP Projection &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Interactive Scatter Plot" href="scatter_plot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">UMAP Projection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/umap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="umap-projection">
+<h1>UMAP Projection<a class="headerlink" href="#umap-projection" title="Link to this heading"></a></h1>
+<section id="module-overview">
+<h2>Module Overview:<a class="headerlink" href="#module-overview" title="Link to this heading"></a></h2>
+<p>The <strong>UMAP Projection Module</strong> provides a way to reduce high-dimensional
+data into a lower-dimensional space (typically 2D or 3D) using the
+<strong>UMAP</strong> (Uniform Manifold Approximation and Projection) algorithm. This
+dimensionality reduction technique is particularly useful for
+visualizing the structure of high-dimensional data while retaining the
+important relationships between data points.</p>
+<p>This module allows users to project complex datasets, such as biological
+or imaging data, into two dimensions, making it easier to identify
+clusters, patterns, and relationships in the data.</p>
+</section>
+<hr class="docutils" />
+<section id="inputs">
+<h2>Inputs:<a class="headerlink" href="#inputs" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p>Users must select a DataFrame from the available pipeline results.
+This DataFrame contains the high-dimensional data that will be
+projected into lower dimensions using UMAP.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Columns Selection</strong>:</p>
+<ul class="simple">
+<li><p>Metadata columns help identify non-data-related information (e.g.,
+sample labels, experimental conditions). You can select the
+metadata columns that you do not want to include in the UMAP
+projection. These columns will remain available after UMAP
+processing and will be useful for labeling and interpreting the
+results.</p></li>
+<li><p>The remaining columns (data columns) will be used as input for
+UMAP.</p></li>
+</ul>
+</li>
+<li><p><strong>UMAP Parameters</strong>:</p>
+<ul class="simple">
+<li><p><strong>Number of Neighbors (``n_neighbors``)</strong>:</p>
+<ul>
+<li><p>This parameter controls how UMAP balances between preserving
+local and global structure.</p></li>
+<li><p>A lower value focuses on local relationships, capturing small
+clusters of similar points.</p></li>
+<li><p>A higher value emphasizes global structure, maintaining
+relationships between more distant points.</p></li>
+<li><p>Default: 15</p></li>
+</ul>
+</li>
+<li><p><strong>Minimum Distance (``min_dist``)</strong>:</p>
+<ul>
+<li><p>This parameter influences how tightly UMAP clusters points in
+the reduced space.</p></li>
+<li><p>A smaller value results in denser clusters (more compact),
+while a larger value leads to more spread-out clusters.</p></li>
+<li><p>Default: 0.1</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Run UMAP</strong>:</p>
+<ul class="simple">
+<li><p>Once the desired settings are chosen, clicking the <strong>Run UMAP</strong>
+button will apply the UMAP algorithm to the selected data columns,
+producing a 2D projection.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="computation">
+<h2>Computation:<a class="headerlink" href="#computation" title="Link to this heading"></a></h2>
+<p><strong>UMAP</strong> works by constructing a graph of the high-dimensional data
+based on distances between points, then mapping that graph to a
+lower-dimensional space.</p>
+<p>The primary UMAP parameters are: - <strong>``n_neighbors``</strong>: Determines how
+UMAP weighs local vs. global structure. Small values capture local
+neighborhood relationships, while larger values capture broader
+structure across the dataset. - <strong>``min_dist``</strong>: Controls how far apart
+points can be in the low-dimensional space. Small values create more
+compact clusters, while large values lead to more evenly distributed
+data points.</p>
+<p>After running UMAP, the result is a 2D (or 3D) projection of the data,
+preserving much of the local structure from the original dataset while
+reducing its complexity.</p>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h2>Outputs:<a class="headerlink" href="#outputs" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>UMAP Embeddings</strong>:</p>
+<ul class="simple">
+<li><p>After running the UMAP algorithm, the module produces a DataFrame
+containing the UMAP coordinates (<code class="docutils literal notranslate"><span class="pre">UMAP-1</span></code>, <code class="docutils literal notranslate"><span class="pre">UMAP-2</span></code>) for each
+data point.</p></li>
+<li><p>This DataFrame also includes the metadata columns selected
+earlier, making it easier to interpret and label the points based
+on metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Pipeline Results</strong>:</p>
+<ul class="simple">
+<li><p>The final UMAP DataFrame (containing both the UMAP embeddings and
+the metadata columns) is saved in the session state, allowing the
+user to visualize or process the embeddings in subsequent modules.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="recommendations-for-use">
+<h2>Recommendations for Use:<a class="headerlink" href="#recommendations-for-use" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Small clusters or distinct groups</strong>: Set a <strong>lower
+``n_neighbors``</strong> value (e.g., 5-10) and a <strong>lower ``min_dist``</strong>
+(e.g., 0.1). This will emphasize capturing tight, small groups of
+similar data points.</p></li>
+<li><p><strong>Smoother, broader distributions</strong>: Set a <strong>higher ``n_neighbors``</strong>
+value (e.g., 30-50) and a <strong>higher ``min_dist``</strong> (e.g., 0.5). This
+will prioritize capturing a broader structure of the data, spreading
+out the clusters.</p></li>
+<li><p><strong>Exploring structure</strong>: Start with the default values and adjust
+based on the dataset’s complexity and the observed patterns in the
+projection.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interpretation-of-umap-results">
+<h2>Interpretation of UMAP Results:<a class="headerlink" href="#interpretation-of-umap-results" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Local vs. Global Relationships</strong>:</p>
+<ul class="simple">
+<li><p>UMAP is designed to prioritize local relationships, so nearby
+points in the original high-dimensional space should remain close
+in the UMAP projection.</p></li>
+<li><p>However, global relationships (points that are far apart in the
+original space) may not always be preserved accurately in the UMAP
+projection.</p></li>
+</ul>
+</li>
+<li><p><strong>Cluster Identification</strong>:</p>
+<ul class="simple">
+<li><p>The UMAP projection often highlights natural groupings in the
+data. These clusters can correspond to meaningful biological
+phenomena, such as different cell types, treatment groups, or
+experimental conditions.</p></li>
+</ul>
+</li>
+<li><p><strong>Limitations</strong>:</p>
+<ul class="simple">
+<li><p>Although UMAP preserves local structure well, distances between
+points in the projection do not always correspond to their true
+distances in the original space. The projection is mainly intended
+for visualization and understanding patterns, not for exact
+distance-based analysis.</p></li>
+</ul>
+</li>
+</ol>
+<p>By using UMAP, you can gain a better understanding of how your data is
+structured, detect hidden patterns, and explore relationships between
+points in a way that’s easy to visualize and interpret.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scatter_plot.html" class="btn btn-neutral float-left" title="Interactive Scatter Plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

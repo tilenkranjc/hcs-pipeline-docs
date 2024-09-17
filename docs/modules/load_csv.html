@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Data &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Load Platemap" href="load_platemap.html" />
+    <link rel="prev" title="Link Datasets" href="link_metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Upload Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/load_csv.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upload-data">
+<h1>Upload Data<a class="headerlink" href="#upload-data" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Upload Data Module</strong> allows users to upload CSV or Excel files and
+integrate them into the analysis pipeline. Users can upload multiple
+files, combine them into a single DataFrame, or process them as separate
+datasets. The module also provides options for adding metadata columns,
+such as filenames and plate numbers, to the data.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>The module enables users to seamlessly load data into the platform for
+further analysis. It ensures that the uploaded files contain the
+required metadata (such as row/column or well information) and offers
+flexibility in how data from multiple files is handled.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>File Uploader</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Allows the user to upload multiple CSV or Excel
+files simultaneously.</p></li>
+<li><p><strong>Accepted Formats</strong>: <code class="docutils literal notranslate"><span class="pre">.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Add a column with the filename</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Checked (enabled).</p></li>
+<li><p><strong>Functionality</strong>: If enabled, this option appends a new column
+called <code class="docutils literal notranslate"><span class="pre">filename</span></code> to the DataFrame, which contains the name of
+the file from which the data originated.</p></li>
+<li><p><strong>Use Case</strong>: Useful for tracking which file each row of data
+comes from, especially when working with multiple datasets.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Add a column “Plate” with the file number</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Checked (enabled).</p></li>
+<li><p><strong>Functionality</strong>: If enabled, adds a <code class="docutils literal notranslate"><span class="pre">plate</span></code> column that
+enumerates the files starting with 1. Each file gets a unique
+number to track its origin.</p></li>
+<li><p><strong>Use Case</strong>: Especially relevant for biological experiments
+involving multiple plates, where you may want to track
+plate-specific data.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Import as separate DataFrames</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Unchecked (disabled).</p></li>
+<li><p><strong>Functionality</strong>: If enabled, each file is processed as an
+individual DataFrame and stored separately. Otherwise, the files
+are merged into a single DataFrame.</p></li>
+<li><p><strong>Use Case</strong>: When files represent distinct datasets that should
+not be combined, this option allows you to keep them separate for
+later analysis.</p></li>
+</ul>
+</li>
+<li><p><strong>Dataset Name Input</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Pre-populated with the current module display name.</p></li>
+<li><p><strong>Functionality</strong>: The user can provide a custom name for the
+dataset. This name is used to save the concatenated or processed
+DataFrame in the session state.</p></li>
+<li><p><strong>Use Case</strong>: Naming datasets helps identify them later in the
+pipeline for further processing or visualization.</p></li>
+</ul>
+</li>
+<li><p><strong>Submit Button</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Once clicked, the uploaded files are processed
+according to the selected options.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-validation">
+<h3>Data Validation:<a class="headerlink" href="#data-validation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Column Requirements</strong>:</p>
+<ul>
+<li><p>The module checks that each file contains either a combination of
+<code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">column</span></code> columns, or a <code class="docutils literal notranslate"><span class="pre">well</span></code> column.</p></li>
+<li><p>If the file contains only a <code class="docutils literal notranslate"><span class="pre">well</span></code> column, it is automatically
+converted to <code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">column</span></code> using the following logic:</p>
+<ul>
+<li><p><strong>Row</strong>: Extracted from the first character (A → 1, B → 2,
+etc.).</p></li>
+<li><p><strong>Column</strong>: Extracted from the numeric part of the well (e.g.,
+well <code class="docutils literal notranslate"><span class="pre">A03</span></code> results in row 1, column 3).</p></li>
+</ul>
+</li>
+<li><p>If the necessary columns are not present, the module generates an
+error, preventing further processing.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Check</strong>:</p>
+<ul>
+<li><p>The module ensures that there is at least one additional column
+besides the required <code class="docutils literal notranslate"><span class="pre">row</span></code>, <code class="docutils literal notranslate"><span class="pre">column</span></code>, <code class="docutils literal notranslate"><span class="pre">well</span></code>, and <code class="docutils literal notranslate"><span class="pre">plate</span></code>
+columns. This additional column typically contains experimental
+metadata (e.g., treatment, time, or condition).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Appending Metadata</strong>:</p>
+<ul class="simple">
+<li><p>Based on user selection, additional columns such as <code class="docutils literal notranslate"><span class="pre">filename</span></code>
+and <code class="docutils literal notranslate"><span class="pre">plate</span></code> are appended to each DataFrame to keep track of the
+data’s origin.</p></li>
+</ul>
+</li>
+<li><p><strong>Combining DataFrames</strong>:</p>
+<ul class="simple">
+<li><p>If the <strong>Import as Separate DataFrames</strong> option is unchecked, the
+module concatenates all the uploaded files into a single DataFrame
+using <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code>. The DataFrames are concatenated row-wise
+(<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>), and the index is ignored (<code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code>) to
+ensure a continuous index in the combined DataFrame.</p></li>
+</ul>
+</li>
+<li><p><strong>Saving Data</strong>:</p>
+<ul class="simple">
+<li><p>The processed DataFrames are saved in
+<code class="docutils literal notranslate"><span class="pre">st.session_state.pipeline_results</span></code> under the name specified by
+the user. This makes the data available for further analysis in
+subsequent modules.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="computation-background">
+<h3>Computation Background:<a class="headerlink" href="#computation-background" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Data Validation</strong>:</p>
+<ul>
+<li><p>The check for <code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">column</span></code> or <code class="docutils literal notranslate"><span class="pre">well</span></code> ensures that the
+uploaded files contain the necessary information to map data to
+specific wells or positions within a plate.</p></li>
+<li><p>The conversion of well identifiers (e.g., <code class="docutils literal notranslate"><span class="pre">A03</span></code>) into <code class="docutils literal notranslate"><span class="pre">row</span></code>
+and <code class="docutils literal notranslate"><span class="pre">column</span></code> allows for flexible file formats that may not
+explicitly provide row/column metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Concatenation</strong>:</p>
+<ul>
+<li><p>Data from multiple files can be combined row-wise (if applicable),
+using <strong>pandas</strong> <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> function, which ensures that the
+data from all files is placed into a single DataFrame for easier
+access and processing.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenarios">
+<h3>Example Usage Scenarios:<a class="headerlink" href="#example-usage-scenarios" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Scenario 1: Multiple Plates with Combined Data</strong>: A biologist
+uploads multiple CSV files representing different plates from an
+experiment. They enable the “Add a column with filename” and “Add a
+column with plate number” options, then upload the files and merge
+them into a single DataFrame. This allows them to analyze the
+combined data across plates while keeping track of which rows came
+from which plate and file.</p></li>
+<li><p><strong>Scenario 2: Separate DataFrames for Different Plates</strong>: In another
+experiment, the biologist wants to keep each plate’s data separate
+for individual analysis. They upload multiple files and select the
+<strong>Import as separate DataFrames</strong> option. Each file is processed into
+its own DataFrame, which can be accessed individually in later steps.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Add Metadata Columns</strong>: Provides flexibility for keeping track of
+file origins when working with multiple datasets.</p></li>
+<li><p><strong>Merge or Separate DataFrames</strong>: Offers the user control over how
+the data is processed — either combined into one DataFrame or kept as
+separate datasets.</p></li>
+<li><p><strong>Custom Naming</strong>: Allows users to easily label and access their
+datasets throughout the analysis pipeline.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="link_metadata.html" class="btn btn-neutral float-left" title="Link Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="load_platemap.html" class="btn btn-neutral float-right" title="Load Platemap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

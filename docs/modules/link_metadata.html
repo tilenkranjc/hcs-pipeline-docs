@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Datasets &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upload Data" href="load_csv.html" />
+    <link rel="prev" title="Interactive Heatmap" href="heatmap_plot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Link Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/link_metadata.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="link-datasets">
+<h1>Link Datasets<a class="headerlink" href="#link-datasets" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Link Datasets Module</strong> enables users to merge two datasets (data
+and metadata) by linking them based on shared columns (<code class="docutils literal notranslate"><span class="pre">plate</span></code>,
+<code class="docutils literal notranslate"><span class="pre">filename</span></code>, and <code class="docutils literal notranslate"><span class="pre">well</span></code>). Users can select metadata combinations from
+the second dataset and apply them to unique combinations of <code class="docutils literal notranslate"><span class="pre">plate</span></code>
+and <code class="docutils literal notranslate"><span class="pre">filename</span></code> in the first dataset. This module is particularly
+useful when merging experimental data with corresponding metadata,
+ensuring that information is aligned across datasets.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module allows users to merge two datasets based on matching
+metadata while providing flexibility in selecting which metadata to
+include. It is ideal for workflows where experimental data needs to be
+linked to corresponding metadata to provide context for further
+analysis.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Data DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects a primary dataset (referred to as
+the “Data DataFrame”). This dataset will be the one to which
+metadata will be linked.</p></li>
+<li><p><strong>Use Case</strong>: Useful for selecting the core experimental data that
+needs to be enriched with metadata.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects a secondary dataset (referred to
+as the “Metadata DataFrame”) from which metadata will be linked to
+the Data DataFrame.</p></li>
+<li><p><strong>Use Case</strong>: This dataset typically contains metadata or
+additional information that provides context for the data (e.g.,
+experimental conditions, treatments).</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Combination Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: For each unique combination of <code class="docutils literal notranslate"><span class="pre">plate</span></code> and
+<code class="docutils literal notranslate"><span class="pre">filename</span></code> in the Data DataFrame, the user selects one or more
+corresponding combinations from the Metadata DataFrame.</p></li>
+<li><p><strong>Use Case</strong>: This allows users to specify which metadata should
+be linked to specific experimental data, enabling selective and
+flexible merging.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Merge DataFrames</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button merges the two selected
+datasets based on the user-defined metadata combinations. The
+resulting DataFrame includes both the experimental data and the
+linked metadata.</p></li>
+<li><p><strong>Use Case</strong>: Once the user defines how the datasets should be
+linked, this button processes the merge and outputs the final
+dataset.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Unique Combination Matching</strong>:</p>
+<ul class="simple">
+<li><p>The module first identifies unique combinations of <code class="docutils literal notranslate"><span class="pre">plate</span></code> and
+<code class="docutils literal notranslate"><span class="pre">filename</span></code> in both the Data DataFrame and the Metadata
+DataFrame. These combinations are then used as the basis for
+linking the two datasets.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Selection</strong>:</p>
+<ul class="simple">
+<li><p>For each unique combination in the Data DataFrame, the user
+selects corresponding combinations from the Metadata DataFrame.
+The selections are made using a <strong>multiselect</strong> input, allowing
+users to choose multiple metadata combinations.</p></li>
+</ul>
+</li>
+<li><p><strong>Merging DataFrames</strong>:</p>
+<ul class="simple">
+<li><p>The selected data and metadata are merged on the <code class="docutils literal notranslate"><span class="pre">well</span></code> column.
+The resulting merged DataFrame contains data from both the primary
+and metadata datasets, with a distinction between the source
+columns.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Merging Experimental Data with Treatment Metadata</strong>: A biologist has
+experimental data collected from multiple plates (<code class="docutils literal notranslate"><span class="pre">plate</span></code>,
+<code class="docutils literal notranslate"><span class="pre">filename</span></code>, <code class="docutils literal notranslate"><span class="pre">well</span></code>) and metadata describing the treatments applied
+to those plates. Using this module, the biologist can link the
+experimental data with the treatment metadata by selecting the
+appropriate combinations from the metadata dataset for each experimental
+dataset. The result is a merged DataFrame that includes both the
+experimental data and the treatment information.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Link Multiple Metadata Combinations</strong>: Users can select multiple
+combinations of metadata to link to specific combinations in the Data
+DataFrame, providing flexibility in how metadata is applied to the
+experimental data.</p></li>
+<li><p><strong>Flexible Merging</strong>: The module allows users to define how data from
+the two datasets should be linked, giving them control over the
+merging process and the resulting dataset structure.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Column Requirements</strong>: Both the Data DataFrame and Metadata
+DataFrame must contain the columns <code class="docutils literal notranslate"><span class="pre">plate</span></code>, <code class="docutils literal notranslate"><span class="pre">filename</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">well</span></code> for the merging process to work properly.</p></li>
+<li><p><strong>Multiple Selections</strong>: Users can link multiple metadata
+combinations to a single combination of <code class="docutils literal notranslate"><span class="pre">plate</span></code> and <code class="docutils literal notranslate"><span class="pre">filename</span></code> in
+the Data DataFrame, allowing for complex merging scenarios.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="heatmap_plot.html" class="btn btn-neutral float-left" title="Interactive Heatmap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="load_csv.html" class="btn btn-neutral float-right" title="Upload Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Barplot &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Quality Filtering" href="qc_df.html" />
+    <link rel="prev" title="Normalization" href="normalization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aggregate.html">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Interactive Barplot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/plot_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interactive-barplot">
+<h1>Interactive Barplot<a class="headerlink" href="#interactive-barplot" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Interactive Barplot Module</strong> allows users to create an interactive
+bar plot from a selected dataset. Users can choose metadata columns for
+grouping and labeling, and a data column to plot on the y-axis. The
+module is highly customizable, offering options for grouping data,
+setting labels, and adding color coding, all of which help users
+visualize their data more effectively.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects a DataFrame from the available
+datasets to visualize.</p></li>
+<li><p><strong>Use Case</strong>: This allows users to choose which dataset they want
+to plot.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Column Inference</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkbox</strong>: Users can choose whether metadata columns start with
+<code class="docutils literal notranslate"><span class="pre">Metadata_</span></code>, simplifying metadata selection.</p></li>
+<li><p><strong>Use Case</strong>: Useful when working with large datasets where
+metadata columns follow a specific naming convention.</p></li>
+</ul>
+</li>
+<li><p><strong>Remove CellProfiler Features</strong>:</p>
+<ul class="simple">
+<li><p><strong>Checkbox</strong>: This option filters out common CellProfiler feature
+columns (e.g., <code class="docutils literal notranslate"><span class="pre">AreaShape</span></code>, <code class="docutils literal notranslate"><span class="pre">Intensity</span></code>) from the metadata
+options, making it easier to focus on relevant metadata.</p></li>
+<li><p><strong>Use Case</strong>: Reduces clutter when selecting metadata columns,
+especially in high-content screening data.</p></li>
+</ul>
+</li>
+<li><p><strong>Metadata Column Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: Users can select which metadata columns to
+include in the plot. These columns can be used as x-axis labels or
+for color grouping.</p></li>
+<li><p><strong>Use Case</strong>: Metadata columns may contain information about
+experimental conditions, timepoints, or treatments, which users
+want to visualize.</p></li>
+</ul>
+</li>
+<li><p><strong>X-Axis Labels</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: The user selects metadata columns to concatenate
+and use as x-axis labels.</p></li>
+<li><p><strong>Use Case</strong>: Useful when users want to display detailed labels
+combining multiple metadata columns.</p></li>
+</ul>
+</li>
+<li><p><strong>Color Grouping</strong>:</p>
+<ul class="simple">
+<li><p><strong>Multiselect</strong>: The user selects metadata columns to concatenate
+for color grouping.</p></li>
+<li><p><strong>Use Case</strong>: Grouping by color helps differentiate samples or
+conditions in the bar plot, enhancing the visual interpretation of
+the data.</p></li>
+</ul>
+</li>
+<li><p><strong>Data Column Selection (Y-Axis)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Selectbox</strong>: The user selects a data column to plot on the
+y-axis. This is the quantitative variable to be displayed.</p></li>
+<li><p><strong>Use Case</strong>: Data columns often represent numerical values like
+measurements, counts, or averages that the user wants to
+visualize.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Plot Data</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Clicking this button generates the bar plot
+based on the selected x-axis, y-axis, and color grouping options.</p></li>
+<li><p><strong>Use Case</strong>: This option finalizes the user’s selections and
+renders the interactive plot.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="data-handling">
+<h3>Data Handling:<a class="headerlink" href="#data-handling" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Slicing the Data</strong>:</p>
+<ul class="simple">
+<li><p>The selected DataFrame is sliced to include only the columns
+needed for plotting. This includes metadata columns for the x-axis
+and color grouping, as well as the selected data column for the
+y-axis.</p></li>
+</ul>
+</li>
+<li><p><strong>Concatenation of Metadata for Labels and Grouping</strong>:</p>
+<ul class="simple">
+<li><p>Metadata columns selected for the x-axis labels and color grouping
+are concatenated into strings. This helps display detailed,
+combined information from multiple metadata columns.</p></li>
+</ul>
+</li>
+<li><p><strong>Interactive Plotting</strong>:</p>
+<ul class="simple">
+<li><p>The plot is generated using <strong>Plotly Express</strong>, an interactive
+plotting library. The plot is responsive, allowing users to zoom,
+hover, and explore the bar plot interactively.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-usage-scenario">
+<h3>Example Usage Scenario:<a class="headerlink" href="#example-usage-scenario" title="Link to this heading"></a></h3>
+<p><strong>Visualizing Experimental Results by Treatment and Timepoint</strong>: A
+biologist has experimental data from multiple conditions, including
+different treatments and timepoints. They want to visualize how a
+specific measurement (e.g., cell viability) changes across treatments
+and time. Using this module, the biologist selects <code class="docutils literal notranslate"><span class="pre">Treatment</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Timepoint</span></code> metadata columns for the x-axis labels and
+<code class="docutils literal notranslate"><span class="pre">Cell</span> <span class="pre">Viability</span></code> as the y-axis variable. The result is an interactive
+bar plot showing cell viability grouped by treatment and time, with
+color-coded bars representing different experimental conditions.</p>
+</section>
+<hr class="docutils" />
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Customizable X-Labels and Grouping</strong>: Users can concatenate
+multiple metadata columns to create detailed x-axis labels and group
+data by different metadata for color coding.</p></li>
+<li><p><strong>Flexible Data Input</strong>: The module automatically infers metadata
+columns and excludes irrelevant ones based on user preferences,
+making it easier to focus on the most important data.</p></li>
+<li><p><strong>Interactive Plotting</strong>: The use of Plotly allows for interactive
+exploration of the data, giving users the ability to zoom in, hover
+over bars for more details, and explore trends visually.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Metadata Inference</strong>: The module can automatically detect metadata
+columns based on naming conventions (<code class="docutils literal notranslate"><span class="pre">Metadata_</span></code>). This is
+particularly helpful when working with large datasets that follow
+standard metadata naming conventions.</p></li>
+<li><p><strong>DataFrame Requirements</strong>: The selected DataFrame must contain both
+metadata columns (for grouping and labeling) and data columns (for
+plotting on the y-axis). Ensure that the correct columns are selected
+for effective visualization.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="normalization.html" class="btn btn-neutral float-left" title="Normalization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qc_df.html" class="btn btn-neutral float-right" title="Data Quality Filtering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

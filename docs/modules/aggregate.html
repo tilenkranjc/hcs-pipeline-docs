@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aggregation &mdash; HCS Pipeline 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modify Combination of Column Values" href="change_col_values_frac.html" />
+    <link rel="prev" title="Add Metadata Columns" href="add_metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HCS Pipeline
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide for HCS Pipeline App</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="add_metadata.html">Add Metadata Columns</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Aggregation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change_col_values_frac.html">Modify Combination of Column Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concat_rows.html">Concatenate Rows of DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance_matrix.html">Distance Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter_columns.html">Select Columns from DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heatmap_plot.html">Interactive Heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_metadata.html">Link Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_csv.html">Upload Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="load_platemap.html">Load Platemap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merge_columns.html">Concatenate or Merge DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_module.html">Interactive Barplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qc_df.html">Data Quality Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remove_outliers.html">Remove Outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample_df.html">Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scatter_plot.html">Interactive Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="umap.html">UMAP Projection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HCS Pipeline</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Modules</a></li>
+      <li class="breadcrumb-item active">Aggregation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/aggregate.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aggregation">
+<h1>Aggregation<a class="headerlink" href="#aggregation" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The <strong>Aggregation Module</strong> allows users to aggregate data by grouping on
+selected metadata columns. The module calculates various summary
+statistics such as the mean, standard deviation (STD), standard error
+(SE), coefficient of variation (CV), and the count of observations.
+Additionally, users have the option to calculate statistical measures
+such as p-values, SSMD (Strictly Standardized Mean Difference), and
+Z-prime, comparing the data to a specified negative control.</p>
+</section>
+<section id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This module is designed to help users group their data by selected
+metadata columns and compute important summary statistics for further
+analysis. For biologists, this is especially useful when working with
+experimental data from high-throughput screens or large datasets where
+data needs to be summarized or compared across different conditions or
+treatments.</p>
+<hr class="docutils" />
+<section id="inputs-and-options">
+<h3>Inputs and Options:<a class="headerlink" href="#inputs-and-options" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>DataFrame Selection</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: The user selects a dataset from the available
+data sources. This dataset will be the base for the aggregation.</p></li>
+<li><p><strong>Validation</strong>: The dataset must contain relevant metadata and
+numerical columns that can be aggregated.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Metadata column inference</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Unchecked.</p></li>
+<li><p><strong>Functionality</strong>: When checked, it automatically selects columns
+that start with the prefix <code class="docutils literal notranslate"><span class="pre">Metadata_</span></code> as potential metadata
+columns. These columns are typically used to store non-numeric
+data related to experimental setup or grouping (e.g., treatment
+conditions, timepoints).</p></li>
+<li><p><strong>Use Case</strong>: Simplifies the process of identifying metadata
+columns when the dataset follows a naming convention.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Remove CellProfiler features</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Unchecked.</p></li>
+<li><p><strong>Functionality</strong>: If enabled, the module filters out columns
+commonly associated with CellProfiler features (e.g.,
+<code class="docutils literal notranslate"><span class="pre">AreaShape</span></code>, <code class="docutils literal notranslate"><span class="pre">Texture</span></code>, <code class="docutils literal notranslate"><span class="pre">Granularity</span></code>), allowing the user
+to focus only on metadata columns during the aggregation process.</p></li>
+<li><p><strong>Use Case</strong>: Useful when working with data generated by
+CellProfiler, where a large number of features can make it
+difficult to find metadata columns.</p></li>
+</ul>
+</li>
+<li><p><strong>Multiselect: Select metadata columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: The user selects which metadata columns will
+be used to group the data during aggregation. These columns help
+define how the data is summarized (e.g., grouping by timepoint,
+treatment, plate).</p></li>
+<li><p><strong>Use Case</strong>: Allows users to customize how data is aggregated,
+depending on experimental factors or groupings of interest.</p></li>
+</ul>
+</li>
+<li><p><strong>Multiselect: Select grouping columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: The user selects columns to define the groups
+for aggregation. These columns are often the same as metadata
+columns but can be adjusted for specific groupings.</p></li>
+<li><p><strong>Use Case</strong>: Groups data based on selected conditions (e.g., all
+wells from a specific plate and timepoint) for summary statistic
+calculations.</p></li>
+</ul>
+</li>
+<li><p><strong>Checkbox: Calculate p-values and SSMD</strong>:</p>
+<ul class="simple">
+<li><p><strong>Default</strong>: Unchecked.</p></li>
+<li><p><strong>Functionality</strong>: If checked, the module calculates additional
+statistical measures like p-values and SSMD (Strictly
+Standardized Mean Difference) to compare experimental groups
+against a control.</p></li>
+<li><p><strong>Use Case</strong>: Useful for assessing the statistical significance
+of observed differences in data, especially when comparing
+treatments or controls.</p></li>
+</ul>
+</li>
+<li><p><strong>Selectbox: Select the negative control</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: If p-values and SSMD are enabled, the user can
+choose a specific condition or group (from the selected grouping
+columns) to serve as the negative control for the statistical
+tests.</p></li>
+<li><p><strong>Use Case</strong>: Defines the reference group against which other
+groups are compared.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Add negative control</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: Allows the user to add multiple negative
+controls for comparison across different conditions.</p></li>
+<li><p><strong>Use Case</strong>: Useful when users want to perform multiple
+statistical comparisons, each with different control groups.</p></li>
+</ul>
+</li>
+<li><p><strong>Dataset Name Input</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: The user can provide a name for the dataset.
+This name is used when saving the aggregated data to make it
+accessible for future analysis steps.</p></li>
+<li><p><strong>Use Case</strong>: Helps organize and label datasets for later use.</p></li>
+</ul>
+</li>
+<li><p><strong>Button: Run Aggregation</strong>:</p>
+<ul class="simple">
+<li><p><strong>Functionality</strong>: This button initiates the aggregation process
+and calculates the requested statistics based on the user’s
+input.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="detailed-explanation-of-computation">
+<h3>Detailed Explanation of Computation:<a class="headerlink" href="#detailed-explanation-of-computation" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Aggregation Functions</strong>:</p>
+<ul class="simple">
+<li><p>The dataset is grouped by the user-specified metadata columns, and
+several aggregation functions are applied to the non-metadata
+(numerical) columns:</p>
+<ul>
+<li><p><strong>Mean</strong>: Computes the average value of the data in each group.</p></li>
+<li><p><strong>Standard Deviation (STD)</strong>: Measures the dispersion or spread
+of values around the mean.</p></li>
+<li><p><strong>Standard Error (SE)</strong>: The standard error of the mean, which
+accounts for sample size.</p></li>
+<li><p><strong>Coefficient of Variation (CV)</strong>: The ratio of the standard
+deviation to the mean, indicating relative variability.</p></li>
+<li><p><strong>Count</strong>: The number of data points within each group.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="mathematical-formulas">
+<h3>Mathematical Formulas:<a class="headerlink" href="#mathematical-formulas" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mean (μ)</strong>: The mean is the sum of all values in a group divided by
+the number of values: [ <span class="math notranslate nohighlight">\(\mu = \frac{1}{n}\)</span>
+:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>sum_{i=1}^{n} x_i <a href="#id3"><span class="problematic" id="id4">`</span></a>]</p>
+<ul class="simple">
+<li><p>Where (x_i) is the individual data point and (n) is the total
+number of data points in the group.</p></li>
+</ul>
+</li>
+<li><p><strong>Standard Deviation (σ)</strong>: The standard deviation measures the
+spread of data points around the mean: [ <span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2}\)</span> ]</p>
+<ul class="simple">
+<li><p>Where ( :math:<a href="#id5"><span class="problematic" id="id6">`</span></a>mu <a href="#id7"><span class="problematic" id="id8">`</span></a>) is the mean of the group, and (n) is
+the sample size.</p></li>
+</ul>
+</li>
+<li><p><strong>Standard Error (SE)</strong>: The standard error of the mean is the
+standard deviation divided by the square root of the sample size: [
+SE = <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span> ]</p>
+<ul class="simple">
+<li><p>Where ( :math:<a href="#id9"><span class="problematic" id="id10">`</span></a>sigma <a href="#id11"><span class="problematic" id="id12">`</span></a>) is the standard deviation, and (n)
+is the sample size.</p></li>
+</ul>
+</li>
+<li><p><strong>Coefficient of Variation (CV)</strong>: The CV is the ratio of the
+standard deviation to the mean: [ <span class="math notranslate nohighlight">\(CV = \frac{\sigma}{\mu}\)</span> ]</p>
+<ul class="simple">
+<li><p>This is useful for comparing the relative variability between
+groups, as it normalizes the standard deviation with respect to
+the mean.</p></li>
+</ul>
+</li>
+<li><p><strong>Count</strong>: The number of observations in each group is calculated
+using the <code class="docutils literal notranslate"><span class="pre">count</span></code> function.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="statistical-measures-p-values-ssmd-and-z-prime">
+<h3>Statistical Measures: P-values, SSMD, and Z-prime<a class="headerlink" href="#statistical-measures-p-values-ssmd-and-z-prime" title="Link to this heading"></a></h3>
+<p>In addition to the aggregation functions, the module provides options
+for calculating p-values, SSMD (Strictly Standardized Mean Difference),
+and Z-prime, which are often used to compare experimental data against a
+control group.</p>
+</section>
+</section>
+<section id="p-values">
+<h2>1. <strong>P-values</strong>:<a class="headerlink" href="#p-values" title="Link to this heading"></a></h2>
+<p>The module uses a two-sample t-test to compute p-values. This compares
+the means of two groups to determine if they are statistically
+different.</p>
+<p>The p-value is computed as: [ t =
+<span class="math notranslate nohighlight">\(\frac{\mu_1 - \mu_2}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}\)</span>
+] Where: - (<span class="math notranslate nohighlight">\(\mu\)</span>_1, <span class="math notranslate nohighlight">\(\mu\)</span>_2) are the means of
+the two groups. - (<span class="math notranslate nohighlight">\(\sigma\)</span>_1, <span class="math notranslate nohighlight">\(\sigma\)</span>_2) are
+the standard deviations of the two groups. - (n_1, n_2) are the sample
+sizes of the two groups.</p>
+</section>
+<section id="strictly-standardized-mean-difference-ssmd">
+<h2>2. <strong>Strictly Standardized Mean Difference (SSMD)</strong>:<a class="headerlink" href="#strictly-standardized-mean-difference-ssmd" title="Link to this heading"></a></h2>
+<p>SSMD is a measure of effect size used in high-throughput screens. It is
+defined as: [ SSMD =
+<span class="math notranslate nohighlight">\(\frac{\mu_1 - \mu_2}{\sqrt{\sigma_1^2 + \sigma_2^2}}\)</span> ]
+Where: - (<span class="math notranslate nohighlight">\(\mu\)</span>_1, <span class="math notranslate nohighlight">\(\mu\)</span>_2) are the means of the
+two groups. - (<span class="math notranslate nohighlight">\(\sigma\)</span>_1, <span class="math notranslate nohighlight">\(\sigma\)</span>_2) are the
+standard deviations of the two groups.</p>
+</section>
+<section id="z-prime">
+<h2>3. <strong>Z-prime</strong>:<a class="headerlink" href="#z-prime" title="Link to this heading"></a></h2>
+<p>Z-prime is a statistical measure used to evaluate the quality of a
+screening assay. It measures the separation between positive and
+negative controls: [ Z’ = 1 -
+<span class="math notranslate nohighlight">\(\frac{3(\sigma_1 + \sigma_2)}{|\mu_1 - \mu_2|}\)</span> ] Where: -
+(<span class="math notranslate nohighlight">\(\mu\)</span>_1, <span class="math notranslate nohighlight">\(\mu\)</span>_2) are the means of the two
+groups. - (<span class="math notranslate nohighlight">\(\sigma\)</span>_1, <span class="math notranslate nohighlight">\(\sigma\)</span>_2) are the
+standard deviations of the two groups.</p>
+<hr class="docutils" />
+<section id="example-usage-scenarios">
+<h3>Example Usage Scenarios:<a class="headerlink" href="#example-usage-scenarios" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Scenario 1: Aggregating Timepoint Data Across Plates</strong>: A biologist
+has data from multiple plates, each representing a different
+timepoint. Using this module, they can group the data by <code class="docutils literal notranslate"><span class="pre">Plate</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Timepoint</span></code> columns, calculating the mean, standard deviation,
+and other statistics for each combination of plate and timepoint.
+They can also add negative controls to assess the statistical
+significance of the timepoint effects.</p></li>
+<li><p><strong>Scenario 2: Comparing Treatments with and without Additional
+Factors</strong>: A biologist is studying the effects of different
+treatments, with some wells exposed to an additional factor (e.g., a
+drug). They can group the data by <code class="docutils literal notranslate"><span class="pre">Treatment</span></code> and <code class="docutils literal notranslate"><span class="pre">Factor</span></code>
+columns and compare the groups using p-values and SSMD to assess the
+impact of the treatments on the observed results. Additionally,
+Z-prime can be calculated to evaluate the quality of the screening
+assay.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h3>Conclusion:<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
+<p>This module provides powerful aggregation and statistical comparison
+tools that are essential for summarizing and analyzing experimental
+data. By offering a range of aggregation functions and statistical
+measures, it enables biologists to quantify variability, assess
+statistical significance, and evaluate the quality of their experimental
+data.</p>
+</section>
+<section id="options-and-flexibility">
+<h3>Options and Flexibility:<a class="headerlink" href="#options-and-flexibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Custom Grouping</strong>: Users can select any combination of metadata
+columns for grouping, allowing flexible aggregation based on
+experimental design.</p></li>
+<li><p><strong>Statistical Comparison</strong>: With the ability to calculate p-values,
+SSMD, and Z-prime, users can quickly assess the significance of
+differences between experimental groups.</p></li>
+<li><p><strong>Control Group Selection</strong>: Provides flexibility to define different
+control groups for statistical comparison, allowing for multiple
+reference conditions to be tested in parallel.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="add_metadata.html" class="btn btn-neutral float-left" title="Add Metadata Columns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="change_col_values_frac.html" class="btn btn-neutral float-right" title="Modify Combination of Column Values" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, TK Analytics.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
